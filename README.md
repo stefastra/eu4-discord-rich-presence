@@ -5,5 +5,5 @@
 
 ### Setup
 
-- ~~Use the provided installer.
-- ~~Subscribe to the mod on the Steam workshop.
+- ~~Use the provided installer.~~
+- ~~Subscribe to the mod on the Steam workshop.~~
