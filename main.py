@@ -1,36 +1,46 @@
 from pypresence import Presence
-from subprocess import check_output
-#from api.windows import get_title, get_process_info, get_status
-#TODO: get proccess id somehow
-import time
-import os
-
+import time, os, psutil
+for proc in psutil.process_iter():
+    if proc.name() == "eu4.exe":
+        print("EU4 detected with pid: " + str(proc.pid))
 months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-
 savefile_path = os.environ['USERPROFILE'] + "\\Documents\\Paradox Interactive\\Europa Universalis IV\\save games\\autosave.eu4"
+startepoch = time.time()
+savefile_size = os.path.getsize(savefile_path)
+flag = True
+RPC = Presence('687351243462541358')
+RPC.connect()
+RPC.update(state="Loading...",
+        large_text="Europa Universalis IV", large_image="eu4logolarge",
+        start=startepoch)
+while(True):
+    if(savefile_size != os.path.getsize(savefile_path)):
+        savefile_size = os.path.getsize(savefile_path)
+        flag = True
+    if(flag):
+        print("Changes found, updating...")
+        i=1
+        f=open(savefile_path,"r")
+        contents = f.read()
+        f.close()
+        listconts = contents.split()
+        country_rank_num = listconts[listconts.index("human=yes") + 3][16:]
+        if(int(country_rank_num) == 1):
+            country_rank = "Duchy"
+        elif(int(country_rank_num) == 2):
+            country_rank = "Kingdom"
+        else:
+            country_rank = "Empire"
+        x = listconts.index("EU4txt")
+        country_name = listconts[x + 4][24:len(listconts[x + 4])-1]
+        current_month = months[int(listconts[x + 1][10:][:-1][:-1])-1]
+        current_year = listconts[x + 1][5:9]
 
-while True:
- time.sleep(15) #TODO: tweak intervals so it doesn't waste resources
- startepoch = time.time()
-
- i=1
- f=open(savefile_path,"r")
- while(i<=5):
-  x=f.readline()[:-1]
-  if(i == 2):
-   current_year = x[5:9]
-   current_month = months[int(x[10:][:-1][:-1])-1] #can only read autosaves, or it breaks
-  if(i == 5):
-   country_name = x[24:len(x)-1]
-  i+=1
- f.close()
-
- ruler_title = "King" #todo
-
- RPC = Presence('687351243462541358')
- RPC.connect()
-
- RPC.update(state=f"{current_month}, {current_year}",
- details=f"{ruler_title} of {country_name}",
- large_text="Europa Universalis IV", large_image="eu4logolarge",
- start=startepoch)
+        RPC.update(state=f"{current_month}, {current_year}",
+        details=f"{country_rank} of {country_name}",
+        large_text="Europa Universalis IV", large_image="eu4logolarge",
+        start=startepoch)
+        flag = False
+        print("Updated presence succesfully")
+    time.sleep(20)
+    print("Checking for changes...")
