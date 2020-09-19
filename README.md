@@ -8,5 +8,5 @@
 
 ### Setup
 
-- Use the provided installer.
+- Use the provided installer. [Coming soon]
 - ~~Subscribe to the mod on the Steam workshop.~~
