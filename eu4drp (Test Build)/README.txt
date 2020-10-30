@@ -7,4 +7,4 @@ how to use:
 this is only a test build and does not have full features, it is only for testing
 full version will be available at: https://github.com/stefastra/eu4-discord-rich-presence
 
-v0.2
+v0.2.1
