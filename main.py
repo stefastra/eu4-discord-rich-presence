@@ -12,10 +12,19 @@ RPC.connect()
 RPC.update(state="Loading...",
         large_text="Europa Universalis IV", large_image="eu4logolarge",
         start=startepoch)
+try:
+    os.listdir(savefile_path)
+except:
+    print('using alternate savefile path...')
+    savefile_path = os.environ['USERPROFILE'] + "\\OneDrive\\Documents\\Paradox Interactive\\Europa Universalis IV\\save games\\"
 while(True):
     save_list = os.listdir(savefile_path)
-    savefile_name = save_list[0]
-    date_max = os.stat(savefile_path + save_list[0]) #exception for no saves goes here
+    try:
+        savefile_name = save_list[0]
+        date_max = os.stat(savefile_path + save_list[0])
+    except:
+        print('Error! No save files found')
+        savefile_name = 'no saves found'
     for sav in save_list:
         date = os.stat(savefile_path + sav)
         if date.st_mtime > date_max.st_mtime:
