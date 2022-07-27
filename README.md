@@ -10,6 +10,10 @@
 - Shows what country you are playing, and it's government rank
 - Shows the the month and year of the latest autosave
 
+### What it doesn't do
+- Turn off the "compress autosaves" option when saving. You need to do that by yourself
+- Build you galleys
+
 ### Setup
 
 - Use the provided installer. [Coming soon]
