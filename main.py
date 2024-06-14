@@ -26,12 +26,13 @@ while(True):
         print('Error! No save files found')
         savefile_name = 'no saves found'
     for sav in save_list:
-        date = os.stat(savefile_path + sav)
-        if date.st_mtime > date_max.st_mtime:
-            savefile_name = sav
-            #if not flag:
-            #    print('Newer save found!')
-            flag=True
+        if(sav == 'autosave.eu4'):
+            #date = os.stat(savefile_path + sav)
+            #if date.st_mtime > date_max.st_mtime:
+                savefile_name = sav
+                #if not flag:
+                #    print('Newer save found!')
+                flag=True
 
     print("Using data from:", savefile_name)
 
