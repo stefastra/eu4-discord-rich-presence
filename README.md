@@ -2,6 +2,7 @@
 [![pypresence](https://img.shields.io/badge/using-pypresence-00bb88.svg?style=for-the-badge&logo=discord&logoWidth=20)](https://github.com/qwertyquerty/pypresence)
 
 > This little application shows Steam 'Rich Presence' data on your Discord profile.
+
 ![Preview](preview.png)
 
 ### What it does
