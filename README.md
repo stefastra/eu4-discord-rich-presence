@@ -3,7 +3,7 @@
 
 > This little application shows Steam 'Rich Presence' data on your Discord profile.
 
-![Preview](showcase.png)
+![Preview](preview.png)
 
 ### What it does
 - Shows exactly the steam provided rich presence data for your game
