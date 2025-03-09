@@ -15,10 +15,10 @@
 
 ### Setup
 - Use the provided installer. [Coming soon]
-- ~~Subscribe to the mod on the Steam workshop.~~
+- ~~Subscribe to the mod on the Steam workshop~~
 
 ### Test Build
-While not the most elegant interface, it should work if you want to try out this program before it's complete.
+While not the most elegant interface, it should work if you want to try out this program before it's complete
 
 ### How it works
 By reading your steam profile's ID3 from your installation directory, it is possible for a webscraper to get paradox's own rich presence data directly from your steam profile. After checking validity and it is then sent to discord using pypresence. Thankfully, doing things this way provides a much better result than what was done previously, which was actually opening and reading the latest autosave then parsing data from it. That was problematic in regards to encrypted ironman saves, so this new solution should be the final version of this app until EU5 comes around.
