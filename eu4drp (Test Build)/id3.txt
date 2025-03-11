@@ -1,0 +1,5 @@
+[DEFAULT]
+id3 = 
+readonstart = True
+sleeptime = 5
+
